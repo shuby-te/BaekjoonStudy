@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL); cout.tie(NULL);
+
+	int t;
+	cin >> t;
+
+	long long * ans = new long long[t];
+
+	for (int j = 0; j < t; j++)
+	{
+		int n;
+		cin >> n;
+
+		long long* dp = new long long[n + 1];
+
+		dp[1] = 1;
+
+		for (long long i = 2; i <= n; i++)
+		{
+			if (i <= 3)
+				dp[i] = 1;
+			else
+				dp[i] = dp[i - 3] + dp[i - 2];
+		}
+
+		ans[j] = dp[n];
+	}
+
+	for (long long i = 0; i < t; i++)
+	{
+		cout << ans[i] << '\n';
+	}
+}
