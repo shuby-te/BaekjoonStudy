@@ -1,0 +1,42 @@
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL); cout.tie(NULL);
+
+	int t;
+	cin >> t;
+
+	int* ans = new int[t];
+
+	for (int j = 0; j < t; j++)
+	{
+		int n;
+		cin >> n;
+
+		map<string, int> m;
+
+		for (int i = 0; i < n; i++)
+		{
+			string name, type;
+			cin >> name >> type;
+
+			m[type]++;
+		}
+
+		int sum = 1;
+		for (auto i = m.begin(); i != m.end(); i++)
+			sum *= (i->second + 1);
+
+		sum -= 1;
+		ans[j] = sum;
+	}
+
+	for (int i = 0; i < t; i++)
+	{
+		cout << ans[i] << '\n';
+	}
+}
